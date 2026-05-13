@@ -1,18 +1,10 @@
 #include "scan.h"
 
-Scan* g_scanner = nullptr;
-
-void signalHandler(int) {
-    if (g_scanner) {
-        g_scanner->stopWorker();
-    }
-    std::exit(0);
-}
-
 int main(int argc, char* argv[]) {
     std::string path;
     std::chrono::seconds interval(30);
     bool skipHidden = false;
+    bool httpMode = false;
 
     for (int i = 1; i < argc; ++i) {
         std::string arg = argv[i];
@@ -23,6 +15,8 @@ int main(int argc, char* argv[]) {
             if (sec > 0) interval = std::chrono::seconds(sec);
         } else if (arg == "--skip-hidden") {
             skipHidden = true;
+        } else if (arg == "--http") {
+            httpMode = true;
         }
     }
 
@@ -33,9 +27,12 @@ int main(int argc, char* argv[]) {
         std::signal(SIGINT, signalHandler);
         std::signal(SIGTERM, signalHandler);
 
-        scanner.runServer();
+        if (httpMode) {
+            scanner.runHttpMode();
+        } else {
+            scanner.runFileMode();
+        }
     } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << '\n';
         return 1;
     }
     return 0;

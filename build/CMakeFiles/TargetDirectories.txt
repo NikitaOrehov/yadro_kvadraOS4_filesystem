@@ -1,3 +1,0 @@
-/home/ornik/YADRO_scan/build/CMakeFiles/media_scanner.dir
-/home/ornik/YADRO_scan/build/CMakeFiles/edit_cache.dir
-/home/ornik/YADRO_scan/build/CMakeFiles/rebuild_cache.dir

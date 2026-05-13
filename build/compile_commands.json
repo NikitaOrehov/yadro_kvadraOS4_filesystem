@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/ornik/YADRO_scan/build",
-  "command": "/usr/bin/g++  -I/home/ornik/YADRO_scan/lib -g -std=gnu++17 -o CMakeFiles/media_scanner.dir/main.cpp.o -c /home/ornik/YADRO_scan/main.cpp",
-  "file": "/home/ornik/YADRO_scan/main.cpp",
-  "output": "CMakeFiles/media_scanner.dir/main.cpp.o"
-}
-]
